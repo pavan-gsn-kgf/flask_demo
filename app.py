@@ -1,7 +1,19 @@
-from flask import Flask 
 
-app = Flask(__name__)
 
-@app.route('/')
-def index():
-    return '<h1>Deployed!</h1><style>body { display: flex; align-items: center; justify-content: center; height: 100vh; }</style>'
+
+
+
+from flask import Flask, jsonify, request 
+
+app = Flask(__name__) 
+
+
+@app.route('/hello', methods=['GET']) 
+def helloworld(): 
+	if(request.method == 'GET'): 
+		data = {"data": "Hello World"} 
+		return jsonify(data) 
+
+
+if __name__ == '__main__': 
+	app.run(debug=True) 
